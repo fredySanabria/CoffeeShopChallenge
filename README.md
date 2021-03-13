@@ -7,7 +7,7 @@ It's developed to follow a Service Design approach, based using techniques like 
 
 * How Run this App:
   - 
-  You will need run ReceiptCreator class.
+  You will need run userInterface.ReceiptCreator class.
   
 * Documentation:
   - 

@@ -1,5 +1,7 @@
 package domain;
 
+import application.DiscountFactory;
+
 import java.util.List;
 
 public class Receipt {
@@ -14,6 +16,8 @@ public class Receipt {
     public Double getTotal() {
         applyExtraDiscount();
         applyFreeBeverageBonus();
+        productList.forEach(System.out::println);
+        System.out.println("\n");
         return productList.stream()
                 .mapToDouble(Product::getPrice)
                 .sum();
@@ -28,7 +32,7 @@ public class Receipt {
                     .filter(item -> item.type == ProductType.EXTRA)
                     .findAny()
                     .get();
-            productWithDiscount.price = 0.0;
+            productList.add(DiscountFactory.createDiscount("Free Extra for combo", productWithDiscount.price));
         }
     }
 
@@ -48,7 +52,7 @@ public class Receipt {
                     .filter(item -> item.type == ProductType.BEVERAGE)
                     .findFirst()
                     .get();
-            freeProduct.price = 0.0;
+            productList.add(DiscountFactory.createDiscount("Free 5 beverage discount", freeProduct.price));
         }
     }
 }

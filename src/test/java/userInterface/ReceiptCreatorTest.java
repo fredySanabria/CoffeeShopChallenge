@@ -1,3 +1,5 @@
+package userInterface;
+
 import application.BeverageService;
 import application.SnackService;
 import domain.Product;
